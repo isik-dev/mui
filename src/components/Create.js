@@ -1,6 +1,5 @@
 import React from "react";
 import { Typography, Button, Container } from "@mui/material";
-
 import KeyboardArrowRightOutlinedIcon from "@mui/icons-material/KeyboardArrowRightOutlined";
 
 export const Create = () => {
@@ -16,6 +15,10 @@ export const Create = () => {
       </Typography>
 
       <Button
+        /* sx={{
+          fontSize: 60,
+          ":hover": { bgcolor: "blue" },
+        }} */
         onClick={() => console.log("You clicked me!")}
         type="submit"
         color="secondary"
