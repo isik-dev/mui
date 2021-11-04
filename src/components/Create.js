@@ -1,8 +1,27 @@
-import React from "react";
-import { Typography, Button, Container } from "@mui/material";
+import React, { useState } from "react";
+import { Typography, Button, Container, TextField } from "@mui/material";
 import KeyboardArrowRightOutlinedIcon from "@mui/icons-material/KeyboardArrowRightOutlined";
 
+import { styled } from "@mui/material/styles";
+
 export const Create = () => {
+  const [title, setTitle] = useState("");
+  const [details, setDetails] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (title && details) {
+      console.log(title, details);
+    }
+  };
+
+  const MyComponent = styled("textfield")({
+    backgroundColor: "aliceblue",
+    marginBottom: 20,
+    marginTop: 20,
+    display: "block",
+  });
   return (
     <Container maxWidth="sm">
       <Typography
@@ -14,41 +33,36 @@ export const Create = () => {
         Create a New Note
       </Typography>
 
+      <MyComponent>
+        <TextField
+          onChange={(e) => setTitle(e.target.value)}
+          label="Note Title"
+          variant="outlined"
+          color="secondary"
+          required
+        />
+      </MyComponent>
+      <MyComponent>
+        <TextField
+          onChange={(e) => setDetails(e.target.value)}
+          label="Details"
+          variant="outlined"
+          color="secondary"
+          multiline
+          rows={4}
+          fullWidth
+          required
+        />
+      </MyComponent>
+
       <Button
-        /* sx={{
-          fontSize: 60,
-          ":hover": { bgcolor: "blue" },
-        }} */
-        onClick={() => console.log("You clicked me!")}
         type="submit"
         color="secondary"
         variant="contained"
         endIcon={<KeyboardArrowRightOutlinedIcon />}
-        /* disableElevation */
       >
         Submit
       </Button>
-
-      {/* <Button type="submit">Submit</Button>
-      <Button type="submit" variant="outlined" color="secondary">
-        Submit
-      </Button>
-
-      <ButtonGroup color="secondary" variant="contained">
-        <Button>One</Button>
-        <Button>Two</Button>
-        <Button>Three</Button>
-        <Button>Four</Button>
-      </ButtonGroup> */}
-
-      {/* icons */}
-      {/* <br />
-      <AcUnitOutlinedIcon />
-      <AcUnitOutlinedIcon color="primary" fontSize="large" />
-      <AcUnitOutlinedIcon color="secondary" fontSize="small" />
-      <AcUnitOutlinedIcon color="action" fontSize="small" />
-      <AcUnitOutlinedIcon color="error" fontSize="small" />
-      <AcUnitOutlinedIcon color="disabled" fontSize="small" /> */}
     </Container>
   );
 };
